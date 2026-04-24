@@ -22,5 +22,5 @@ public class ConsumoApi {
         }
 
         return response.body();
-    };
+    }
 }
