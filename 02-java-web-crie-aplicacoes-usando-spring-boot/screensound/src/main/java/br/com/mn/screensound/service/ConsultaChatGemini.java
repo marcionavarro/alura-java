@@ -8,7 +8,7 @@ public class ConsultaChatGemini {
     public static String obterInformacao(String texto) {
         // Seguindo o exemplo da imagem: pegando a chave de uma variável de ambiente
         GoogleAiGeminiChatModel model = GoogleAiGeminiChatModel.builder()
-            .apiKey(System.getenv("GEMINI_API_KEY"))
+            .apiKey('GEMINI_API_KEY') // Substitua pela sua chave de API do Gemini
             .modelName("gemini-2.5-flash")
             .maxOutputTokens(1000)
             .temperature(0.7)

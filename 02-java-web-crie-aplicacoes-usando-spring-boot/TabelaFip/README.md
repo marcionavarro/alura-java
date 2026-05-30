@@ -54,7 +54,7 @@ Antes de começar, certifique-se de que você possui:
 
 ```bash
 git clone https://github.com/marcionavarro/alura-java
-cd TabelaFip
+cd 02-java-web-crie-aplicacoes-usando-spring-boot/TabelaFip
 ```
 
 ### 2️⃣ Compile o Projeto
