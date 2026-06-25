@@ -1,0 +1,2 @@
+Para rodar a api  rode:
+java -jar api.jar
