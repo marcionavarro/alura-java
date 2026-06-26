@@ -1,2 +1,4 @@
+GIT: https://github.com/alura-cursos/3149-boas-praticas-java
+
 Para rodar a api  rode:
 java -jar api.jar
