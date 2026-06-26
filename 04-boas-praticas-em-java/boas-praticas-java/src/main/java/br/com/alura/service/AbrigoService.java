@@ -27,11 +27,21 @@ public class AbrigoService {
         String responseBody = response.body();
         Abrigo[] abrigos = new ObjectMapper().readValue(responseBody, Abrigo[].class);
         List<Abrigo> abrigoList = Arrays.stream(abrigos).toList();
+
+        if (abrigoList.isEmpty()) {
+            System.out.println("Não há abrigos cadastrados");
+            return;
+        }
+
+        mostrarAbrigos(abrigoList);
+    }
+
+    private static void mostrarAbrigos(List<Abrigo> abrigoList) {
         System.out.println("Abrigos cadastrados:");
         for (Abrigo abrigo : abrigoList) {
             long id = abrigo.getId();
             String nome = abrigo.getNome();
-            System.out.println(ANSI_VERDE + id + " - " + nome + ANSI_RESET);
+            System.out.println(id + " - " + nome);
         }
     }
 
@@ -53,7 +63,7 @@ public class AbrigoService {
             System.out.println("Abrigo cadastrado com sucesso!");
             System.out.println(responseBody);
         } else if (statusCode == 400 || statusCode == 500) {
-            System.out.println(ANSI_VERMELHO + "Erro ao cadastrar o abrigo:" + ANSI_RESET);
+            System.out.println("Erro ao cadastrar o abrigo:");
             System.out.println(responseBody);
         }
     }
