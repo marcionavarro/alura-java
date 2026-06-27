@@ -1,11 +1,7 @@
 package br.com.alura.adopet.api.model;
 
-import br.com.alura.adopet.api.dto.CadastrarAbrigoDTO;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import br.com.alura.adopet.api.dto.CadastroAbrigoDTO;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
 
 import java.util.List;
 import java.util.Objects;
@@ -30,7 +26,7 @@ public class Abrigo {
     public Abrigo() {
     }
 
-    public Abrigo(CadastrarAbrigoDTO dto) {
+    public Abrigo(CadastroAbrigoDTO dto) {
         this.nome = dto.nome();
         this.telefone = dto.telefone();
         this.email = dto.email();

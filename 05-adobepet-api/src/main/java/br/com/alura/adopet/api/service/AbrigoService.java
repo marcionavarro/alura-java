@@ -1,13 +1,12 @@
 package br.com.alura.adopet.api.service;
 
 import br.com.alura.adopet.api.dto.AbrigoDTO;
-import br.com.alura.adopet.api.dto.CadastrarAbrigoDTO;
+import br.com.alura.adopet.api.dto.CadastroAbrigoDTO;
 import br.com.alura.adopet.api.dto.PetDTO;
 import br.com.alura.adopet.api.exception.ValidacaoException;
 import br.com.alura.adopet.api.model.Abrigo;
 import br.com.alura.adopet.api.repository.AbrigoRepository;
 import br.com.alura.adopet.api.repository.PetRepository;
-import jakarta.validation.ValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,7 +30,7 @@ public class AbrigoService {
             .toList();
     }
 
-    public void cadastrar(CadastrarAbrigoDTO dto) {
+    public void cadastrar(CadastroAbrigoDTO dto) {
         boolean abrigoCadastrado = abrigoRepository
             .existsByNomeOrTelefoneOrEmail(dto.nome(), dto.telefone(), dto.email());
 

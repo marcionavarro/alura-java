@@ -1,9 +1,7 @@
 package br.com.alura.adopet.api.controller;
 
-import br.com.alura.adopet.api.dto.AtualizarDTO;
-import br.com.alura.adopet.api.dto.CadastrarTutorDTO;
-import br.com.alura.adopet.api.model.Tutor;
-import br.com.alura.adopet.api.repository.TutorRepository;
+import br.com.alura.adopet.api.dto.AtualizarTutorDTO;
+import br.com.alura.adopet.api.dto.CadastroTutorDTO;
 import br.com.alura.adopet.api.service.TutorService;
 import jakarta.validation.Valid;
 import jakarta.validation.ValidationException;
@@ -21,7 +19,7 @@ public class TutorController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<String> cadastrar(@RequestBody @Valid CadastrarTutorDTO dto) {
+    public ResponseEntity<String> cadastrar(@RequestBody @Valid CadastroTutorDTO dto) {
         try {
             tutorService.cadastrar(dto);
             return ResponseEntity.ok().build();
@@ -32,7 +30,7 @@ public class TutorController {
 
     @PutMapping
     @Transactional
-    public ResponseEntity<String> atualizar(@RequestBody @Valid AtualizarDTO dto) {
+    public ResponseEntity<String> atualizar(@RequestBody @Valid AtualizarTutorDTO dto) {
         tutorService.atualizar(dto);
         return ResponseEntity.ok().build();
     }

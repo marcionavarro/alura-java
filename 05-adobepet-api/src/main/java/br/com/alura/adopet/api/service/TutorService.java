@@ -1,7 +1,7 @@
 package br.com.alura.adopet.api.service;
 
-import br.com.alura.adopet.api.dto.AtualizarDTO;
-import br.com.alura.adopet.api.dto.CadastrarTutorDTO;
+import br.com.alura.adopet.api.dto.AtualizarTutorDTO;
+import br.com.alura.adopet.api.dto.CadastroTutorDTO;
 import br.com.alura.adopet.api.exception.ValidacaoException;
 import br.com.alura.adopet.api.model.Tutor;
 import br.com.alura.adopet.api.repository.TutorRepository;
@@ -15,7 +15,7 @@ public class TutorService {
     @Autowired
     private TutorRepository tutorRepository;
 
-    public void cadastrar(CadastrarTutorDTO dto) {
+    public void cadastrar(CadastroTutorDTO dto) {
         boolean tutorCadastrado = tutorRepository.findByTelefoneOrEmail(dto.telefone(), dto.email());
 
         if (tutorCadastrado) {
@@ -25,7 +25,7 @@ public class TutorService {
         tutorRepository.save(new Tutor(dto));
     }
 
-    public void atualizar(@Valid AtualizarDTO dto) {
+    public void atualizar(@Valid AtualizarTutorDTO dto) {
         Tutor tutor = tutorRepository.getReferenceById(dto.id());
         tutor.atualizarDados(dto);
     }

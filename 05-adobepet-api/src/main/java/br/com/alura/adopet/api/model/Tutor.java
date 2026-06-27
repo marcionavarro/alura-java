@@ -1,13 +1,9 @@
 package br.com.alura.adopet.api.model;
 
-import br.com.alura.adopet.api.dto.AtualizarDTO;
-import br.com.alura.adopet.api.dto.CadastrarTutorDTO;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import br.com.alura.adopet.api.dto.AtualizarTutorDTO;
+import br.com.alura.adopet.api.dto.CadastroTutorDTO;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
 
 import java.util.List;
 import java.util.Objects;
@@ -32,13 +28,13 @@ public class Tutor {
     public Tutor() {
     }
 
-    public Tutor(CadastrarTutorDTO dto) {
+    public Tutor(CadastroTutorDTO dto) {
         this.nome = dto.nome();
         this.telefone = dto.telefone();
         this.email = dto.email();
     }
 
-    public void atualizarDados(@Valid AtualizarDTO dto) {
+    public void atualizarDados(@Valid AtualizarTutorDTO dto) {
         this.nome = dto.nome();
         this.telefone = dto.telefone();
         this.email = dto.email();

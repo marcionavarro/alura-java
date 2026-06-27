@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface TutorRepository extends JpaRepository<Tutor, Long> {
 
     boolean findByTelefoneOrEmail(
-        @NotBlank @Pattern(regexp = "\\(?\\d{2}\\)?\\d?\\d{4}-?\\d{4}") String telefone,
-        @NotBlank @Email String email);
+        String telefone,
+        String email
+    );
 }
