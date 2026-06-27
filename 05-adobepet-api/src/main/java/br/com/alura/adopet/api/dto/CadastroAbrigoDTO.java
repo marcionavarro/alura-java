@@ -5,9 +5,8 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 
 public record CadastroAbrigoDTO(
-    @NotBlank Long id,
-    String nome,
+    @NotBlank String nome,
     @NotBlank @Pattern(regexp = "\\(?\\d{2}\\)?\\d?\\d{4}-?\\d{4}") String telefone,
-    @Email String email
+    @NotBlank @Email String email
 ) {
 }
