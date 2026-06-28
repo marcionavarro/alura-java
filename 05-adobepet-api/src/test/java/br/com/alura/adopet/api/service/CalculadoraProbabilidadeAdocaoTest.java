@@ -12,7 +12,10 @@ import org.junit.jupiter.api.Test;
 class CalculadoraProbabilidadeAdocaoTest {
 
     @Test
-    void cenario01() {
+    void deveriaRetornarProbabilidadeAltaParaPetComIdadeBaixaEComPesoBaixo() {
+        // idade 4 anos e 4kg - ALTA
+
+        // ARRANGE
         Abrigo abrigo = new Abrigo(
             new CadastroAbrigoDTO("Abrigo feliz", "94999999999", "abrigofeliz@email.com")
         );
@@ -22,13 +25,18 @@ class CalculadoraProbabilidadeAdocaoTest {
         );
 
         CalculadoraProbabilidadeAdocao calculadora = new CalculadoraProbabilidadeAdocao();
+
+        // ACT
         ProbabilidadeAdocao probabilidade = calculadora.calcular(pet);
 
+        // ASSERT
         Assertions.assertEquals(ProbabilidadeAdocao.ALTA, probabilidade);
     }
 
     @Test
-    void cenario02() {
+    void deveriaRetornarProbabilidadeMediaParaPetComIdadeAltaEComPesoBaixo() {
+        // idade 15 anos e 4kg - MEDIA
+
         Abrigo abrigo = new Abrigo(
             new CadastroAbrigoDTO("Abrigo feliz", "94999999999", "abrigofeliz@email.com")
         );
