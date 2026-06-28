@@ -16,7 +16,7 @@ public class ValidacaoPetDIsponivel implements ValidacaoSolicitacaoAdocao {
     @Override
     public void validar(SolicitacaoAdocaoDTO dto) {
         Pet pet = petRepository.getReferenceById(dto.idPet());
-        if (pet.getAdotado() == true) {
+        if (pet.getAdotado()) {
             throw new ValidacaoException("Pet já foi adotado!");
         }
     }
