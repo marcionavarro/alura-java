@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 public class AdocaoController {
 
     @Autowired
-    AdocaoService adocaoService;
+    private AdocaoService adocaoService;
 
     @PostMapping
     @Transactional
