@@ -22,7 +22,6 @@ public class ValidacaoTutorComAdocaoEmAndamento implements ValidacaoSolicitacaoA
     @Override
     public void validar(SolicitacaoAdocaoDTO dto) {
 
-        List<Adocao> adocoes = adocaoRepository.findAll();
         boolean tutorTemAdocaoEmAndamento = adocaoRepository
             .existsByTutorIdAndStatus(dto.idTutor(), StatusAdocao.AGUARDANDO_AVALIACAO);
 

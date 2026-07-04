@@ -4,6 +4,7 @@ import br.com.alura.adopet.api.dto.AbrigoDTO;
 import br.com.alura.adopet.api.dto.CadastroAbrigoDTO;
 import br.com.alura.adopet.api.dto.CadastroPetDTO;
 import br.com.alura.adopet.api.dto.PetDTO;
+import br.com.alura.adopet.api.exception.ValidacaoException;
 import br.com.alura.adopet.api.model.Abrigo;
 import br.com.alura.adopet.api.service.AbrigoService;
 import br.com.alura.adopet.api.service.PetService;
@@ -38,7 +39,7 @@ public class AbrigoController {
         try {
             abrigoService.cadastrar(dto);
             return ResponseEntity.ok().build();
-        } catch (ValidationException ex) {
+        } catch (ValidacaoException ex) {
             return ResponseEntity.badRequest().body(ex.getMessage());
         }
     }
@@ -48,7 +49,7 @@ public class AbrigoController {
         try {
             List<PetDTO> petDoAbrigo = abrigoService.listarPetsDoAbrigo(idOuNome);
             return ResponseEntity.ok(petDoAbrigo);
-        } catch (ValidationException ex) {
+        } catch (ValidacaoException ex) {
             System.out.println(ex.getMessage());
             return ResponseEntity.notFound().build();
         }
@@ -61,7 +62,7 @@ public class AbrigoController {
             Abrigo abrigo = abrigoService.carregarAbrigo(idOuNome);
             petService.cadastrarPet(abrigo, dto);
             return ResponseEntity.ok().build();
-        } catch (ValidationException ex) {
+        } catch (ValidacaoException ex) {
             System.out.println(ex.getMessage());
             return ResponseEntity.notFound().build();
         }
