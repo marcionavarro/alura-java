@@ -18,17 +18,11 @@ public class ValidacaoTutorComLimiteDeAdocoes implements ValidacaoSolicitacaoAdo
     public void validar(SolicitacaoAdocaoDTO dto) {
         List<Adocao> adocoes = adocaoRepository.findAll();
 
-        boolean tutorTemAdocaoEmAndamento = adocaoRepository
-            .existsByTutorIdAndStatus(dto.idTutor(), StatusAdocao.APROVADO);
+        Integer adocoesTutor = adocaoRepository
+            .countByTutorIdAndStatus(dto.idTutor(), StatusAdocao.APROVADO);
 
-        for (Adocao a : adocoes) {
-            int contador = 0;
-            if (tutorTemAdocaoEmAndamento) {
-                contador = contador + 1;
-            }
-            if (contador == 5) {
-                throw new ValidacaoException("Tutor chegou ao limite máximo de 5 adoções!");
-            }
+        if (adocoesTutor == 5) {
+            throw new ValidacaoException("Tutor chegou ao limite máximo de 5 adoções!");
         }
     }
 

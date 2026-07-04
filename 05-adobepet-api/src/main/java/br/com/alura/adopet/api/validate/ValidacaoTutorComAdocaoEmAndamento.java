@@ -26,10 +26,8 @@ public class ValidacaoTutorComAdocaoEmAndamento implements ValidacaoSolicitacaoA
         boolean tutorTemAdocaoEmAndamento = adocaoRepository
             .existsByTutorIdAndStatus(dto.idTutor(), StatusAdocao.AGUARDANDO_AVALIACAO);
 
-        for (Adocao a : adocoes) {
-            if (tutorTemAdocaoEmAndamento) {
-                throw new ValidacaoException("Tutor já possui outra adoção aguardando avaliação!");
-            }
+        if (tutorTemAdocaoEmAndamento) {
+            throw new ValidacaoException("Tutor já possui outra adoção aguardando avaliação!");
         }
     }
 
