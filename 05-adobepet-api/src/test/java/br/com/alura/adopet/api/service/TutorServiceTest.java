@@ -36,7 +36,7 @@ class TutorServiceTest {
     @Test
     void naoDeveriaCadastrarTutorTelefoneOuEmailJaCadastrado() {
         // Arrange + Act
-        given(tutorRepository.findByTelefoneOrEmail(dto.telefone(), dto.email())).willReturn(true);
+        given(tutorRepository.existsByTelefoneOrEmail(dto.telefone(), dto.email())).willReturn(true);
 
         // Assert
         assertThrows(ValidacaoException.class, () -> tutorService.cadastrar(dto));
@@ -45,7 +45,7 @@ class TutorServiceTest {
     @Test
     void deveriaCadastrarTutor() {
         // Arrange + Act
-        given(tutorRepository.findByTelefoneOrEmail(dto.telefone(), dto.email())).willReturn(false);
+        given(tutorRepository.existsByTelefoneOrEmail(dto.telefone(), dto.email())).willReturn(false);
 
         // Assert
         assertDoesNotThrow(() -> tutorService.cadastrar(dto));
