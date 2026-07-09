@@ -4,11 +4,12 @@ services:
     image: node:16
     volumes:
       - ./front-end:/app
+      - /app/node_modules
       - type: bind
         source: ./front-end.sh
         target: /app/entrypoint.sh
     working_dir: /app
-    command: sh ./entrypoint.sh
+    command: bash ./entrypoint.sh
     ports: 
       - 4200:4200
     environment:
@@ -18,11 +19,12 @@ services:
     image: node:16
     volumes:
       - ./mkt-node:/app
+      - /app/node_modules
       - type: bind
         source: ./mkt-node.sh
         target: /app/entrypoint.sh
     working_dir: /app
-    command: sh ./entrypoint.sh
+    command: bash ./entrypoint.sh
     environment: 
       SERVER_PORT: 3000
       MONGO_URL: "mongodb://mkt-usuario:mkt-senha@mongo-mkt:27017/mkt?authSource=admin"
@@ -44,13 +46,13 @@ services:
       MONGO_INITDB_DATABASE: mkt
 
   rabbitmq:
-    image: rabbitmq
+    image:  rabbitmq:3.12-management
     ports:
       - 5672:5672
 
   web-financeiro:
     build: ./financeiro-php
-    command: sh ./entrypoint.sh
+    command: bash ./entrypoint.sh
     ports:
       - 9501:9501
     volumes:
@@ -82,7 +84,7 @@ services:
         source: ./academico-php.sh
         target: /app/entrypoint.sh
     working_dir: /app
-    command: sh ./entrypoint.sh
+    command: bash ./entrypoint.sh
     depends_on:
       - rabbitmq
       - postgre-academico
@@ -123,7 +125,7 @@ services:
         source: ./academico-php-web.sh
         target: /app/entrypoint.sh
     working_dir: /app
-    command: sh ./entrypoint.sh
+    command: bash ./entrypoint.sh
     ports:
       - 8080:8080
     depends_on:
